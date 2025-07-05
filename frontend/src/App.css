@@ -1,38 +1,292 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 .App {
-    text-align: center;
+  text-align: left;
+  scroll-behavior: smooth;
 }
 
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
 }
 
-.App-header {
-    background-color: #0f0f10;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #0066ff, #8b5cf6);
+  border-radius: 4px;
 }
 
-.App-link {
-    color: #61dafb;
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #0052cc, #7c3aed);
 }
 
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+/* Smooth transitions */
+* {
+  transition: all 0.3s ease;
+}
+
+/* Glass morphism effect */
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Gradient backgrounds */
+.gradient-bg {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Animation keyframes */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes slideInUp {
+  from { 
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse-custom {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-slideInUp {
+  animation: slideInUp 0.8s ease-out;
+}
+
+/* Custom hover effects */
+.hover-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+/* Custom button styles */
+.btn-primary {
+  @apply bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300;
+}
+
+.btn-secondary {
+  @apply bg-white/20 backdrop-blur-sm border border-white/30 text-white px-8 py-4 rounded-full font-semibold hover:bg-white/30 transition-all duration-300;
+}
+
+/* Custom card styles */
+.card {
+  @apply bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden;
+}
+
+.card-dark {
+  @apply bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300;
+}
+
+/* Form styles */
+.form-input {
+  @apply w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300;
+}
+
+.form-select {
+  @apply w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300;
+}
+
+/* Custom gradients */
+.bg-gradient-primary {
+  background: linear-gradient(135deg, #0066ff 0%, #8b5cf6 100%);
+}
+
+.bg-gradient-secondary {
+  background: linear-gradient(135deg, #00ff7f 0%, #00ffff 100%);
+}
+
+.bg-gradient-tertiary {
+  background: linear-gradient(135deg, #ff6b35 0%, #ef4444 100%);
+}
+
+/* Typography */
+.text-gradient {
+  background: linear-gradient(135deg, #0066ff 0%, #8b5cf6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-green {
+  background: linear-gradient(135deg, #00ff7f 0%, #00ffff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Loading animations */
+.loading-dots {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+
+.loading-dots div {
+  position: absolute;
+  top: 33px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #0066ff;
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+
+.loading-dots div:nth-child(1) {
+  left: 8px;
+  animation: loading-dots1 0.6s infinite;
+}
+
+.loading-dots div:nth-child(2) {
+  left: 8px;
+  animation: loading-dots2 0.6s infinite;
+}
+
+.loading-dots div:nth-child(3) {
+  left: 32px;
+  animation: loading-dots2 0.6s infinite;
+}
+
+.loading-dots div:nth-child(4) {
+  left: 56px;
+  animation: loading-dots3 0.6s infinite;
+}
+
+@keyframes loading-dots1 {
+  0% { transform: scale(0); }
+  100% { transform: scale(1); }
+}
+
+@keyframes loading-dots3 {
+  0% { transform: scale(1); }
+  100% { transform: scale(0); }
+}
+
+@keyframes loading-dots2 {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(24px, 0); }
+}
+
+/* Responsive design enhancements */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.5rem;
+    line-height: 1.2;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.125rem;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .card {
+    margin-bottom: 1rem;
+  }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Focus states */
+*:focus {
+  outline: 2px solid #0066ff;
+  outline-offset: 2px;
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .text-gradient {
+    background: none;
+    -webkit-background-clip: unset;
+    -webkit-text-fill-color: unset;
+    background-clip: unset;
+    color: #0066ff;
+  }
+}
+
+/* Custom animations for sections */
+.section-enter {
+  opacity: 0;
+  transform: translateY(50px);
+}
+
+.section-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.section-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section-exit-active {
+  opacity: 0;
+  transform: translateY(-50px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* Industry-specific color schemes */
+.industry-pharma {
+  background: linear-gradient(135deg, #0066ff 0%, #4338ca 100%);
+}
+
+.industry-medical {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+}
+
+.industry-food {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+}
+
+.industry-biotech {
+  background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+}
+
+.industry-nutra {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
 }
