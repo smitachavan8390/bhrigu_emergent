@@ -40,7 +40,8 @@ const scaleIn = {
 };
 
 const AnimatedSection = ({ children, className = "" }) => {
-  const [ref, inView] = useInView({ threshold: 0.1, triggerOnce: true });
+  const ref = useRef(null);
+  const inView = useInView(ref, { threshold: 0.1, once: true });
   
   return (
     <motion.div
