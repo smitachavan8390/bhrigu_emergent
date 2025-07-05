@@ -499,7 +499,7 @@ const ProductsPage = () => {
               Interactive dashboard builder, real-time KPI monitoring, and predictive 
               analytics models for data-driven decision making.
             </motion.p>
-          </motion.div>
+          </div>
           
           <motion.div 
             variants={staggerChildren}
