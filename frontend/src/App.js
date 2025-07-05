@@ -62,6 +62,15 @@ import {
 } from 'lucide-react';
 import './App.css';
 
+// Import page components
+import SolutionsPage from './pages/SolutionsPage';
+import IndustriesPage from './pages/IndustriesPage';
+import TechnologyPage from './pages/TechnologyPage';
+import AboutPage from './pages/AboutPage';
+import ProductsPage from './pages/ProductsPage';
+import ResourcesPage from './pages/ResourcesPage';
+import ContactPage from './pages/ContactPage';
+
 const fadeInUp = {
   initial: { opacity: 0, y: 60 },
   animate: { opacity: 1, y: 0 },
@@ -499,13 +508,13 @@ function App() {
         <NavigationBar />
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/solutions" element={<div>Solutions Page Coming Soon</div>} />
-          <Route path="/industries" element={<div>Industries Page Coming Soon</div>} />
-          <Route path="/technology" element={<div>Technology Page Coming Soon</div>} />
-          <Route path="/about" element={<div>About Page Coming Soon</div>} />
-          <Route path="/products" element={<div>Products Page Coming Soon</div>} />
-          <Route path="/resources" element={<div>Resources Page Coming Soon</div>} />
-          <Route path="/contact" element={<div>Contact Page Coming Soon</div>} />
+          <Route path="/solutions" element={<SolutionsPage />} />
+          <Route path="/industries" element={<IndustriesPage />} />
+          <Route path="/technology" element={<TechnologyPage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/products" element={<ProductsPage />} />
+          <Route path="/resources" element={<ResourcesPage />} />
+          <Route path="/contact" element={<ContactPage />} />
         </Routes>
         <Footer />
       </Router>
