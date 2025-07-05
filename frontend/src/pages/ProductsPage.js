@@ -134,7 +134,7 @@ const ProductsPage = () => {
             </motion.h2>
             <motion.p 
               variants={fadeInUp}
-              className="text-xl text-gray-700 max-w-3xl mx-auto"
+              className="text-lg text-gray-700 mb-8 leading-relaxed"
             >
               Six essential modules that work together to provide complete 
               manufacturing and compliance management.
