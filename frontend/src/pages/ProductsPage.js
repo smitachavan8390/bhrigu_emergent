@@ -494,7 +494,7 @@ const ProductsPage = () => {
             
             <motion.p 
               variants={fadeInUp}
-              className="text-xl text-gray-700 max-w-3xl mx-auto"
+              className="text-lg text-gray-700 mb-8 leading-relaxed"
             >
               Interactive dashboard builder, real-time KPI monitoring, and predictive 
               analytics models for data-driven decision making.
