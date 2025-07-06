@@ -62,6 +62,9 @@ import {
 } from 'lucide-react';
 import './App.css';
 
+// Import components
+import HeroSection from './components/HeroSection';
+
 // Import page components
 import SolutionsPage from './pages/SolutionsPage';
 import IndustriesPage from './pages/IndustriesPage';
@@ -160,7 +163,11 @@ const NavigationBar = () => {
                   key={item.name}
                   href={item.path}
                   whileHover={{ scale: 1.05 }}
-                  className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors flex items-center gap-1"
+                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors flex items-center gap-1 ${
+                    isScrolled 
+                      ? 'text-gray-700 hover:text-blue-600' 
+                      : 'text-white hover:text-cyan-400'
+                  }`}
                 >
                   <item.icon size={16} />
                   {item.name}
@@ -172,7 +179,11 @@ const NavigationBar = () => {
           <div className="lg:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-gray-700 hover:text-blue-600"
+              className={`transition-colors ${
+                isScrolled 
+                  ? 'text-gray-700 hover:text-blue-600' 
+                  : 'text-white hover:text-cyan-400'
+              }`}
             >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -266,85 +277,8 @@ const Footer = () => {
 const HomePage = () => {
   return (
     <div>
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <div 
-          className="absolute inset-0 z-0"
-          style={{
-            backgroundImage: `linear-gradient(135deg, rgba(0, 102, 255, 0.9) 0%, rgba(139, 92, 246, 0.8) 100%), url('https://images.pexels.com/photos/6075001/pexels-photo-6075001.jpeg')`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundAttachment: 'fixed'
-          }}
-        />
-        
-        <div className="relative z-10 text-center text-white px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 100 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.2, ease: "easeOut" }}
-            className="max-w-5xl mx-auto"
-          >
-            <motion.h1 
-              className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 leading-tight"
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 1, delay: 0.2 }}
-            >
-              Engineering Intelligence.
-              <br />
-              <span className="bg-gradient-to-r from-green-400 to-cyan-400 bg-clip-text text-transparent">
-                Empowering Compliance.
-              </span>
-            </motion.h1>
-            
-            <motion.p 
-              className="text-xl sm:text-2xl mb-8 text-gray-100 max-w-3xl mx-auto"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-            >
-              Redefining how regulated industries embrace Industry 4.0/5.0 through intelligent, 
-              compliant, and future-ready platforms.
-            </motion.p>
-            
-            <motion.div 
-              className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-            >
-              <motion.a
-                href="/solutions"
-                whileHover={{ scale: 1.05, boxShadow: "0 10px 30px rgba(0, 102, 255, 0.3)" }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-2"
-              >
-                <Play size={20} />
-                Explore Solutions
-              </motion.a>
-              
-              <motion.a
-                href="/contact"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-white/20 backdrop-blur-sm border border-white/30 text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white/30 transition-all duration-300 flex items-center gap-2"
-              >
-                Schedule Demo
-                <ArrowRight size={20} />
-              </motion.a>
-            </motion.div>
-          </motion.div>
-        </div>
-        
-        <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white"
-        >
-          <ChevronDown size={32} />
-        </motion.div>
-      </section>
+      {/* Enhanced Hero Section */}
+      <HeroSection />
 
       {/* Quick Overview */}
       <AnimatedSection className="py-24 bg-gradient-to-br from-gray-50 to-white">
